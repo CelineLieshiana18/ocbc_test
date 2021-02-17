@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\NasabahController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('/rekening',[NasabahController::class,'inputDataRekening'])->name('inputDataRekening');
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('/');
