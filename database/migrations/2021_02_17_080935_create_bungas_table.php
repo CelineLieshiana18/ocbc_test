@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateNasabahsTable extends Migration
+class CreateBungasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateNasabahsTable extends Migration
      */
     public function up()
     {
-        Schema::create('nasabahs', function (Blueprint $table) {
-            $table->char('no_rekening',12)->primary();
-            $table->char('nama',25);
-            $table->dateTime('tanggal_realisasi');
-            $table->decimal('plafond',19,0);
-            $table->integer('jangka_waktu');
+        Schema::create('bungas', function (Blueprint $table) {
+            $table->increments('id',)->primary();
+            $table->char('no_rekening',12);
+            $table->dateTime('tanggal_perubahan_bunga');
             $table->decimal('persen_bunga',5,2);
             $table->timestamps();
         });
@@ -31,6 +29,6 @@ class CreateNasabahsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('nasabahs');
+        Schema::dropIfExists('bungas');
     }
 }

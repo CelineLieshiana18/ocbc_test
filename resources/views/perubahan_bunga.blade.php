@@ -16,11 +16,11 @@
         <div class="card" style="width: 50%; margin-left: 25%; margin-top:3%;">
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Input Data Rekening</h3>
+                    <h3 class="card-title">Input Data Perubahan Bunga</h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form action="{{ route('storeRekening') }}" method="POST">
+                <form action="{{ route('storeBunga') }}" method="POST">
                     @csrf
                     <div class="card-body">
                         <div class="form-group">
@@ -28,22 +28,11 @@
                             <input type="text" class="form-control" name="noRekening" id="noRekening" required placeholder="ex. 123456789" autofocus>
                         </div>
                         <div class="form-group">
-                            <label for="class">Nama</label>
-                            <input id="nama" name="nama" type="text" class="form-control" required placeholder="Nama Lengkap">
+                            <label for="class">Tanggal Perubahan Bunga</label>
+                            <input id="tanggalPerubahanBunga" name="tanggalPerubahanBunga" type="datetime-local" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label for="class">Tanggal Realisasi</label>
-                            <input id="tanggalRealisasi" name="tanggalRealisasi" type="datetime-local" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="class">Plafond</label>
-                            <input id="plafond" name="plafond" type="text" class="form-control" required placeholder="Plafond">
-                        </div>
-                        <div class="form-group">
-                            <label for="end_time">Persen Bunga : <input style="border: 2px solid gray;"  name="persenBunga" type="text" size="10" id="persenBunga" required/> %(Dalam Setahun)</label>
-                        </div>
-                        <div class="form-group">
-                            <label for="end_time">Jangka Waktu : <input style="border: 2px solid gray;"  name="jangkaWaktu" type="text" size="10" id="jangkaWaktu" required/> Minggu</label>
+                            <label for="end_time">Persen Bunga : <input style="border: 2px solid gray;"  name="persenBunga" type="text" size="10" id="persenBunga" required/> %(Dalam Setahun) </label>
                         </div>
                     </div>
                     <!-- /.card-body -->
@@ -59,7 +48,7 @@
         <div class="card" style="margin-left:3%;margin-right:3%;margin-top:3%">
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Data Rekening</h3>
+                    <h3 class="card-title">Data Perubahan Bunga</h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -68,24 +57,18 @@
                             <tr>
                                 <th>No</th>
                                 <th>Nomor Rekening</th>
-                                <th>Nama</th>
-                                <th>Tanggal Realisasi</th>
-                                <th>Plafon</th>
-                                <th>Jangka Waktu</th>
+                                <th>Tanggal Perubahan Bunga</th>
                                 <th>Persen Bunga</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php $i=1;?>
-                            @foreach ($data as $nasabah)
+                            @foreach ($data as $bunga)
                             <tr>
                                 <td>{{ $i }}</td>
-                                <td>{{ $nasabah->no_rekening }}</td>
-                                <td>{{ $nasabah->nama }}</td>
-                                <td>{{ $nasabah->tanggal_realisasi }}</td>
-                                <td>{{ $nasabah->plafond }}</td>
-                                <td>{{ $nasabah->jangka_waktu }}</td>
-                                <td>{{ $nasabah->persen_bunga }}</td>
+                                <td>{{ $bunga->no_rekening }}</td>
+                                <td>{{ $bunga->tanggal_perubahan_bunga }}</td>
+                                <td>{{ $bunga->persen_bunga }}</td>
                             </tr>
                             <?php $i++;?>
                             @endforeach
@@ -94,10 +77,7 @@
                             <tr>
                                 <th>No</th>
                                 <th>Nomor Rekening</th>
-                                <th>Nama</th>
-                                <th>Tanggal Realisasi</th>
-                                <th>Plafon</th>
-                                <th>Jangka Waktu</th>
+                                <th>Tanggal Perubahan Bunga</th>
                                 <th>Persen Bunga</th>
                             </tr>
                         </tfoot>

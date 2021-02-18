@@ -43,7 +43,7 @@
                         <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-l">
                             <div style="width:100%;height:100%;" item-align="center">
                                 <div align="center">
-                                    <div class="ml-4 text-lg leading-7 font-semibold text-gray-900 dark:text-white"><a href="#" class="underline text-gray-900 dark:text-white">Input Perubahan Bunga</a></div>
+                                    <div class="ml-4 text-lg leading-7 font-semibold text-gray-900 dark:text-white"><a href="{{ route('perubahanBunga') }}" class="underline text-gray-900 dark:text-white">Input Perubahan Bunga</a></div>
                                 </div>
                             </div>
                         </div>
@@ -51,7 +51,7 @@
                         <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-l">
                             <div style="width:100%;height:100%;" item-align="center">
                                 <div align="center">
-                                    <div class="ml-4 text-lg leading-7 font-semibold text-gray-900 dark:text-white"><a href="#" class="underline text-gray-900 dark:text-white">Hitung Jadwal Angsuran</a></div>
+                                    <div class="ml-4 text-lg leading-7 font-semibold text-gray-900 dark:text-white"><a href="{{ route('angsuran') }}" class="underline text-gray-900 dark:text-white">Hitung Jadwal Angsuran</a></div>
                                 </div>
                             </div>
                         </div>
