@@ -14,7 +14,7 @@ class CreateNasabahsTable extends Migration
     public function up()
     {
         Schema::create('nasabahs', function (Blueprint $table) {
-            $table->char('no_rekening',12)->primary();
+            $table->char('no_rekening',12)->primary()->unique();
             $table->char('nama',25);
             $table->dateTime('tanggal_realisasi');
             $table->decimal('plafond',19,0);

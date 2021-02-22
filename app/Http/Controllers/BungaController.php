@@ -15,6 +15,9 @@ class BungaController extends Controller
 
     public function storeBunga(Request $request)
     {
+        $validatedData = $request->validate([
+            'persenBunga' => ['required', 'min:0', 'max:100'],
+        ]);
         $bunga = new Bunga();
         $bunga->no_rekening = $request->noRekening;
         $bunga->tanggal_perubahan_bunga = $request->tanggalPerubahanBunga;

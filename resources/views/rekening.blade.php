@@ -12,7 +12,16 @@
         <div class="flex justify-center pt-8 sm:justify-start sm:pt-0" style="padding-top: 5%;">
             <img align="center" src="{{ asset('img/ocbc_logo.png') }}" style="display:block;margin-left:auto;margin-right:auto;width:40%;height:10%;"/>
         </div>
-
+        @if (isset($errors))
+            
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <div class="card" style="width: 50%; margin-left: 25%; margin-top:3%;">
             <div class="card card-primary">
                 <div class="card-header">

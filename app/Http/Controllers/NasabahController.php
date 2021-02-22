@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Nasabah;
 use App\Models\Bunga;
 use Illuminate\Support\Facades\DB;
+use Validator;
 
 class NasabahController extends Controller
 {
@@ -17,15 +18,32 @@ class NasabahController extends Controller
 
     public function storeRekening(Request $request)
     {
-        $nasabah = new Nasabah();
-        $nasabah->no_rekening = $request->noRekening;
-        $nasabah->nama = $request->nama;
-        $nasabah->tanggal_realisasi = $request->tanggalRealisasi;
-        $nasabah->plafond = $request->plafond;
-        $nasabah->jangka_waktu = $request->jangkaWaktu;
-        $nasabah->persen_bunga = $request->persenBunga;
-        $nasabah->save();
-        return redirect('/rekening');
+        // dd($request->all());
+        // $validatedData = Validator::make($request->all(), [ 
+        //     'persenBunga' => 'min:0|max:255',
+        //     'plafond' => 'min:1',
+        // ]);
+        if($request->plafond > 0 && $request->persenBunga >= 0 && $request->persenBunga <= 100){
+            $nasabah = new Nasabah();
+            $nasabah->no_rekening = $request->noRekening;
+            $nasabah->nama = $request->nama;
+            $nasabah->tanggal_realisasi = $request->tanggalRealisasi;
+            $nasabah->plafond = $request->plafond;
+            $nasabah->jangka_waktu = $request->jangkaWaktu;
+            $nasabah->persen_bunga = $request->persenBunga;
+            $nasabah->save();
+            return redirect('/rekening');
+        }else{
+            $data = Nasabah::all();
+            $send = [
+                'data'=>$data,
+                'errors'=>[
+                    ['plafond > 0'],
+                    ['persen bunga harus >= 0 dan < 100']
+                ]
+            ];
+            return view('rekening')->with($send);
+        }
     }
 
 
